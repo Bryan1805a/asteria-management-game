@@ -1,8 +1,13 @@
 "use client"; // This tells Next.js this is an interactive client-side component
 
 import { useEffect, useState } from "react";
+import { clearInterval } from "timers";
 
 export default function Home() {
+  const [commsLog, setCommsLog] = useState<string[]>([
+    "> Asteria Station mainframe initialized.",
+    "> Real-time telemetry established.",
+  ]);
   // Set up state
   const [inventory, setInventory] = useState({
     username: "Connecting...",
@@ -15,20 +20,23 @@ export default function Home() {
 
   // Establish the WebSocket connection when the page loads
   useEffect(() => {
-    // Connect to the FastAPI WebSocket route
-    const ws = new WebSocket("ws://127.0.0.1:8000/ws/inventory");
+    const fetchAIReport = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/api/comms");
+        const data = await res.json();
 
-    ws.onopen = () => setStatus("SECURE");
-    ws.onclose = () => setStatus("OFFLINE");
-
-    // Every time Python sends a message, update the screen instantly
-    ws.onmessage = (event) => {
-      const liveData = JSON.parse(event.data);
-      setInventory(liveData);
+        if (data.status === "success") {
+          setCommsLog(prev => [...prev, `> ${data.message}`].slice(-5));
+        }
+      } catch (error) {
+        console.error("AI Comms error:", error);
+      }
     };
 
-    // Clean up the connection if close the browser tab
-    return () => ws.close();
+    fetchAIReport();
+    const interval = setInterval(fetchAIReport, 15000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -89,12 +97,14 @@ export default function Home() {
         <section className="border border-slate-700 bg-slate-900/50 flex flex-col shadow-lg md:col-span-4 h-48">
           <div className="bg-slate-800 p-2 text-xs font-bold tracking-widest uppercase border-b border-slate-700 flex justify-between items-center">
             <span className="text-slate-400">Comms Link // Dolphin-Phi</span>
-            <span className="text-yellow-500 text-[10px]">STANDBY</span>
+            <span className="text-emerald-500 animate-pulse text-[10px]">ACTIVE</span>
           </div>
-          <div className="p-4 font-mono text-sm text-slate-500 overflow-y-auto">
-            <p>{">"} Asteria station mainframe initialized.</p>
-            <p>{">"} Real-time telemetry established.</p>
-            <p className="text-emerald-500/70">{">"} Mining operations commenced.</p>
+          <div className="p-4 font-mono text-sm text-slate-400 overflow-y-auto flex flex-col gap-2">
+            {commsLog.map((msg, index) => (
+              <p key={index} className={index === commsLog.length - 1 ? "text-slate-200" : ""}>
+                {msg}
+              </p>
+            ))}
           </div>
         </section>
 

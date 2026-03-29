@@ -5,6 +5,7 @@ from psycopg2.extras import RealDictCursor
 import asyncio
 import json
 from decimal import Decimal
+import httpx
 
 app = FastAPI(title="Asteria Station API")
 
@@ -60,3 +61,44 @@ async def websocket_inventory(websocket: WebSocket):
             
     except WebSocketDisconnect:
         print("Commander disconnected from server.")
+
+@app.get("/api/comms")
+async def get_ai_report():
+    conn = get_db_connection()
+    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    cursor.execute("""
+        SELECT iron_ore, water
+        FROM station_inventory
+        WHERE player_id = 1;
+    """)
+    inventory = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    # Contruct the prompt
+    prompt = f"""
+        You are the AI assistant of Asteria Space Station.
+        Current inventory: {inventory['iron_ore']} kg Iron, {inventory['water']} L Water.
+        Provide a 1-sentence immersive status report.
+        If water drops below safety stock levels, warn the Administrator.
+        Keep it technical, gritty, and under 20 words.
+    """
+
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(
+                "http://localhost:11434/api/generate",
+                json={
+                    "model": "dolphin-phi",
+                    "prompt": prompt,
+                    "stream": False
+                },
+                timeout=10.0
+            )
+            ai_text = response.json()["response"].strip()
+
+            return {"status": "success",
+                    "message": ai_text}
+        except Exception as e:
+            return {"status": "error",
+                    "message": "Comms arrray offline. Attempting reconnect..."}
