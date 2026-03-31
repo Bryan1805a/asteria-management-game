@@ -1,1 +1,0 @@
-# asteria-management-game
