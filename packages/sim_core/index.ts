@@ -1,4 +1,4 @@
-import { GameState, ModuleInstance } from "@asteria/shared_types";
+import { GameState, ModuleInstance, TickResult, HourlyReport } from "@asteria/shared_types";
 import { moduleDefinition, recipeDefinition } from "@asteria/game_config";
 
 // Default phase
@@ -181,4 +181,56 @@ export function advanceOneHour(state: GameState): GameState {
     }
 
     return nextState;
+}
+
+// Fast-Forward and Auto-Pause function
+export function advanceTime(initialState: GameState, hoursToAdvance: number): TickResult {
+    let currentState = initialState;
+    const hourlyReports: HourlyReport[] = [];
+    let stoppedEarly = false;
+    let stopReason: string | undefined = undefined;
+
+    for (let i = 0; i < hoursToAdvance; i++) {
+        const nextState = advanceOneHour(currentState);
+
+        // Collect the new event and alerts generation
+        const newEvents = nextState.eventLog.filter(e => e.hour === nextState.currentHour);
+        const newAlerts = nextState.alerts.filter(a => a.createdAtHour === nextState.currentHour);
+
+        hourlyReports.push({
+            hour: nextState.currentHour,
+            events: newEvents,
+            alerts: newAlerts,
+        });
+
+        // Auto-Pause and Interruption Rules -----------------
+        // rule 1: Stop if a critical life-support or power alert fires
+        const criticalAlert = newAlerts.find(a => a.serverity === "critical");
+        if (criticalAlert) {
+            stoppedEarly = true;
+            stopReason = `Critical Alert: ${criticalAlert.message}`;
+        }
+
+        // rule 2: Stop if a job or construction finishes
+        const jobCompleted = newEvents.find(e => e.message.includes("Job completed"));
+        if (jobCompleted && !stoppedEarly) {
+            stoppedEarly = true;
+            stopReason = "Job completed";
+        }
+
+        currentState = nextState;
+
+        // Break the loop early if an interruption condition was met
+        if (stoppedEarly) {
+            break;
+        }
+    }
+
+    return {
+        state: currentState,
+        hoursAdvanced: hourlyReports.length,
+        stoppedEarly,
+        stopReason,
+        hourlyReports,
+    };
 }
