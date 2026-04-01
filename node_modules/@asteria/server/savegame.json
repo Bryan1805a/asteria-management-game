@@ -1,12 +1,12 @@
 {
-  "currentHour": 43,
+  "currentHour": 61,
   "population": 10,
   "resources": {
-    "power": 492,
+    "power": 646,
     "oxygen": 0,
     "water": 0,
     "food": 0,
-    "rock": 100,
+    "rock": 150,
     "metal": 10
   },
   "storageCap": {
@@ -113,9 +113,9 @@
     {
       "id": "job_1775050648099",
       "type": "mine_rock",
-      "progressHours": 0,
+      "progressHours": 13,
       "requiredHours": 13,
-      "status": "active"
+      "status": "completed"
     }
   ],
   "alerts": [
@@ -755,6 +755,384 @@
       "code": "CRITICAL_FOOD",
       "message": "FOOD depleted! Population at immediate risk.",
       "createdAtHour": 43
+    },
+    {
+      "id": "alert_oxygen_44",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 44
+    },
+    {
+      "id": "alert_water_44",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 44
+    },
+    {
+      "id": "alert_food_44",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 44
+    },
+    {
+      "id": "alert_oxygen_45",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 45
+    },
+    {
+      "id": "alert_water_45",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 45
+    },
+    {
+      "id": "alert_food_45",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 45
+    },
+    {
+      "id": "alert_oxygen_46",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 46
+    },
+    {
+      "id": "alert_water_46",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 46
+    },
+    {
+      "id": "alert_food_46",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 46
+    },
+    {
+      "id": "alert_oxygen_47",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 47
+    },
+    {
+      "id": "alert_water_47",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 47
+    },
+    {
+      "id": "alert_food_47",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 47
+    },
+    {
+      "id": "alert_oxygen_48",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 48
+    },
+    {
+      "id": "alert_water_48",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 48
+    },
+    {
+      "id": "alert_food_48",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 48
+    },
+    {
+      "id": "alert_oxygen_49",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 49
+    },
+    {
+      "id": "alert_water_49",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 49
+    },
+    {
+      "id": "alert_food_49",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 49
+    },
+    {
+      "id": "alert_oxygen_50",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 50
+    },
+    {
+      "id": "alert_water_50",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 50
+    },
+    {
+      "id": "alert_food_50",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 50
+    },
+    {
+      "id": "alert_oxygen_51",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 51
+    },
+    {
+      "id": "alert_water_51",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 51
+    },
+    {
+      "id": "alert_food_51",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 51
+    },
+    {
+      "id": "alert_oxygen_52",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 52
+    },
+    {
+      "id": "alert_water_52",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 52
+    },
+    {
+      "id": "alert_food_52",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 52
+    },
+    {
+      "id": "alert_oxygen_53",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 53
+    },
+    {
+      "id": "alert_water_53",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 53
+    },
+    {
+      "id": "alert_food_53",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 53
+    },
+    {
+      "id": "alert_oxygen_54",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 54
+    },
+    {
+      "id": "alert_water_54",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 54
+    },
+    {
+      "id": "alert_food_54",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 54
+    },
+    {
+      "id": "alert_oxygen_55",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 55
+    },
+    {
+      "id": "alert_water_55",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 55
+    },
+    {
+      "id": "alert_food_55",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 55
+    },
+    {
+      "id": "alert_oxygen_56",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 56
+    },
+    {
+      "id": "alert_water_56",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 56
+    },
+    {
+      "id": "alert_food_56",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 56
+    },
+    {
+      "id": "alert_oxygen_57",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 57
+    },
+    {
+      "id": "alert_water_57",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 57
+    },
+    {
+      "id": "alert_food_57",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 57
+    },
+    {
+      "id": "alert_oxygen_58",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 58
+    },
+    {
+      "id": "alert_water_58",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 58
+    },
+    {
+      "id": "alert_food_58",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 58
+    },
+    {
+      "id": "alert_oxygen_59",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 59
+    },
+    {
+      "id": "alert_water_59",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 59
+    },
+    {
+      "id": "alert_food_59",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 59
+    },
+    {
+      "id": "alert_oxygen_60",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 60
+    },
+    {
+      "id": "alert_water_60",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 60
+    },
+    {
+      "id": "alert_food_60",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 60
+    },
+    {
+      "id": "alert_oxygen_61",
+      "serverity": "critical",
+      "code": "CRITICAL_OXYGEN",
+      "message": "OXYGEN depleted! Population at immediate risk.",
+      "createdAtHour": 61
+    },
+    {
+      "id": "alert_water_61",
+      "serverity": "critical",
+      "code": "CRITICAL_WATER",
+      "message": "WATER depleted! Population at immediate risk.",
+      "createdAtHour": 61
+    },
+    {
+      "id": "alert_food_61",
+      "serverity": "critical",
+      "code": "CRITICAL_FOOD",
+      "message": "FOOD depleted! Population at immediate risk.",
+      "createdAtHour": 61
     }
   ],
   "eventLog": [
@@ -777,6 +1155,11 @@
       "id": "log_37_build_1775038238462",
       "hour": 37,
       "message": "Job completed: build_storage_bay"
+    },
+    {
+      "id": "log_56_job_1775050648099",
+      "hour": 56,
+      "message": "Job completed: mine_rock"
     }
   ],
   "autoPauseRules": {
