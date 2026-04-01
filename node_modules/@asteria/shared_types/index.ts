@@ -77,3 +77,17 @@ export type GameState = {
     eventLog: EventLogEntry[];
     autoPauseRules: AutoPauseRules;
 };
+
+export type HourlyReport = {
+    hour: number;
+    events: EventLogEntry[];
+    alerts: Alert[];
+};
+
+export type TickResult = {
+    state: GameState;
+    hoursAdvanced: number;
+    stoppedEarly: boolean;
+    stopReason?: string;
+    hourlyReports: HourlyReport[];
+};
