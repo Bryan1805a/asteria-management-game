@@ -1,0 +1,10 @@
+{
+    "name": "@asteria/game_config",
+    "version": "1.0.0",
+    "private": true,
+    "main": "index.ts",
+    "types": "index.ts",
+    "dependencies": {
+        "@asteria/shared_types": "*"
+    }
+}
