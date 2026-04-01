@@ -77,4 +77,10 @@ export const recipeDefinition: Partial<Record<JobType, RecipeDefinitionEntry>> =
         output: { metal: 10 },
         requiredModule: "refinery",
     },
+    build_storage_bay: {
+        durationHours: 24,
+        powerCostPerHour: 1,
+        output: {},
+        requiredModule: "refinery",
+    },
 };

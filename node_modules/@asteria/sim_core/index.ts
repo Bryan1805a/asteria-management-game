@@ -98,6 +98,19 @@ export function advanceOneHour(state: GameState): GameState {
         if (job.progressHours >= recipe.durationHours) {
             job.status = "completed";
 
+            // Apply module completion effects for construction jobs.
+            if (job.type === "build_storage_bay") {
+                nextState.modules.push({
+                    id: `m_store_${nextState.currentHour}_${job.id}`,
+                    type: "storage_bay",
+                    name: `Cargo Bay ${nextState.modules.filter(m => m.type === "storage_bay").length + 1}`,
+                    status: "active",
+                    efficiency: 1,
+                });
+                nextState.storageCap.rock = (nextState.storageCap.rock ?? 0) + 100;
+                nextState.storageCap.metal = (nextState.storageCap.metal ?? 0) + 100;
+            }
+
             // Deduct inputs consumed upon completion
             if (recipe.inputOnCompletion) {
                 for (const [res, amount] of Object.entries(recipe.inputOnCompletion)) {
@@ -171,7 +184,7 @@ export function advanceOneHour(state: GameState): GameState {
             nextState.alerts.push({
                 id: `alert_${ls}_${nextState.currentHour}`,
                 serverity: severity,
-                code: isCritical ? `CRITICAL_${ls.toUpperCase()}` : `LOW_${ls.toUpperCase}`,
+                code: isCritical ? `CRITICAL_${ls.toUpperCase()}` : `LOW_${ls.toUpperCase()}`,
                 message: isCritical
                     ? `${ls.toUpperCase()} depleted! Population at immediate risk.`
                     : `${ls.toUpperCase()} reserves are running dangerously low.`,
