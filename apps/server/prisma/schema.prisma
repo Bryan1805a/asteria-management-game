@@ -11,10 +11,20 @@ datasource db {
   provider = "postgresql"
 }
 
+model User {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  password  String
+  savegames SaveGame[]
+}
+
 model SaveGame {
-  id        Int      @id
+  id        Int      @id @default(autoincrement())
   name      String   @default("Asteria Station")
   stateJson Json
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
 }

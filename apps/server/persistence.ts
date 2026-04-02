@@ -9,7 +9,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
+export const prisma = new PrismaClient({ adapter });
 
 function normalizeLegacyAlertCodes(state: GameState): boolean {
   let changed = false;
@@ -30,14 +30,14 @@ function normalizeLegacyAlertCodes(state: GameState): boolean {
   return changed;
 }
 
-export async function loadGameState(gameId: number): Promise<GameState> {
-  const existing = await prisma.saveGame.findUnique({ where: { id: gameId } });
+export async function loadGameState(userId: number): Promise<GameState> {
+  const existing = await prisma.saveGame.findFirst({ where: { userId } });
 
   if (!existing) {
     const newState = createInitialGameState();
     await prisma.saveGame.create({
       data: {
-        id: gameId,
+        userId,
         stateJson: newState,
       },
     });
@@ -46,19 +46,27 @@ export async function loadGameState(gameId: number): Promise<GameState> {
 
   const state = existing.stateJson as unknown as GameState;
   if (normalizeLegacyAlertCodes(state)) {
-    await saveGameState(gameId, state);
+    await saveGameState(userId, state);
   }
 
   return state;
 }
 
-export async function saveGameState(gameId: number, state: GameState): Promise<void> {
-  await prisma.saveGame.upsert({
-    where: { id: gameId },
-    update: { stateJson: state },
-    create: {
-      id: gameId,
-      stateJson: state,
-    },
-  });
+export async function saveGameState(userId: number, state: GameState): Promise<void> {
+  // Try to find the existing save game for this user
+  const existing = await prisma.saveGame.findFirst({ where: { userId } });
+
+  if (existing) {
+    await prisma.saveGame.update({
+      where: { id: existing.id },
+      data: { stateJson: state },
+    });
+  } else {
+    await prisma.saveGame.create({
+      data: {
+        userId,
+        stateJson: state,
+      },
+    });
+  }
 }
