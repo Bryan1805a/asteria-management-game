@@ -5,7 +5,7 @@ Welcome to the **Asteria Station Management Protocol**, an immersive, web-based 
 ## Screenshots
 | Main Screen | Login |
 |:---:|:---:|
-| ![Main Screen](/screenshot/main_menu.png) | ![Login](/screenshot/login.png) |
+| ![Main Screen](/screenshot/main_menu.png) | ![Login](/screenshot/login_.png) |
 
 ## Overview
 
