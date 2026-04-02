@@ -2,6 +2,11 @@
 
 Welcome to the **Asteria Station Management Protocol**, an immersive, web-based space station sandbox where you orchestrate the survival and growth of an off-world colony.
 
+## Screenshots
+| Main Screen | Login |
+|:---:|:---:|
+| ![Main Screen](/screenshot/main_menu.png) | ![Login](/screenshot/login.png) |
+
 ## Overview
 
 Asteria Station challenges players to balance crucial life-support systems, manage resource constraints, and oversee construction projects. Every decision costs time and resources, and the station's environment is constantly shifting beneath you! 
